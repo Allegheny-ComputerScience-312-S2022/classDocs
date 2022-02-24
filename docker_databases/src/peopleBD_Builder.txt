@@ -1,0 +1,18 @@
+
+/*Basic SQLite3 database*/
+DROP TABLE people;
+CREATE TABLE people(
+/*CREATE TABLE IF NOT EXISTS people(*/
+	id varchar(4),
+	dept varchar(4),
+	favfood varchar(3)
+);
+
+INSERT INTO people VALUES ("obonhamcarter","CP","pizza" );
+INSERT INTO people VALUES ("jjumadinova","CP","soup" );
+INSERT INTO people VALUES ("luman","CP-Art","soup" );
+INSERT INTO people VALUES ("gkapfham","CP","soup" );
+INSERT INTO people VALUES ("amohan","CP","soup" );
+INSERT INTO people VALUES ("ykim","CP","pizza" );
+INSERT INTO people VALUES ("planzine","CP","soup" );
+INSERT INTO people VALUES ("dwagner","CP","chilly" );
