@@ -1,0 +1,45 @@
+/* Remove the table if it is already in the database, then create it from scratch. This is good for updating a table schema*/
+DROP TABLE Department;
+CREATE TABLE Department (
+id VARCHAR NOT NULL PRIMARY KEY,
+dept VARCHAR NOT NULL,
+roomNum VARCHAR NOT NULL
+);
+
+
+
+/* Remove the table if it is already in the database, then create it from scratch. This is good for updating a table schema*/
+DROP TABLE Tea;
+CREATE TABLE Tea (
+id VARCHAR NOT NULL PRIMARY KEY,
+tea VARCHAR NOT NULL,
+sandwich VARCHAR NOT NULL
+);
+
+/* Remove the table if it is already in the database, then create it from scratch. This is good for updating a table schema*/
+DROP TABLE Session;
+CREATE TABLE Session (
+id VARCHAR NOT NULL PRIMARY KEY,
+session VARCHAR NOT NULL,
+material VARCHAR NOT NULL
+);
+
+
+INSERT INTO Department Values ("JJ	",  "CS	", 105);
+INSERT INTO Department Values ("OBC", " CS", 104);
+INSERT INTO Department Values ("AM",  "CS	", 106);
+
+
+INSERT INTO Tea Values ("JJ	", 1, "Ruban");
+INSERT INTO Tea Values ("OBC", 1, "PBJ");
+INSERT INTO Tea Values ("AM", 0,  "Chicken");
+
+
+
+INSERT INTO Session Values ("JJ	", 101, "pres");
+INSERT INTO Session Values ("OBC", 112, "pres");
+INSERT INTO Session Values ("AM", 111,  "poster");
+
+
+
+select Tea.ID, Tea.tea, Department.dept, Department.roomNum, Session.session, Session.material from Tea, Department, Session where Tea.ID == Session.ID and Department.ID == Session.ID;
