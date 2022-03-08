@@ -1,0 +1,43 @@
+JJ,  CS,105
+OBC,  CS,104
+AM,  CS,106
+GK,  CS,108
+PL,  CS,110
+DW,  CS,112
+MC, GEO,209
+RO, GEO,203
+SR, GEO,1
+SS, GEO,201
+KT, GEO,204
+,,
+,,
+,,
+,,
+,,
+JJ,1,Ruban
+OBC,1,PBJ
+AM,1,Chicken
+GK,1,Chicken
+PL,0,Ruban
+DW,0,PBJ
+MC,1,Ruban
+RO,0,PBJ
+SR,1,Ruban
+SS,1,Ruban
+KT,1,Ruban
+,,
+,,
+,,
+,,
+,,
+JJ,101,    pres
+OBC,112,    pres
+AM,111,    poster
+GK,109,    workshop
+PL,109,    poster
+DW,101,    pres
+MC,112,    pres
+RO,111,    poster
+SR,111,    poster
+SS,109,    workshop
+KT,112,    article
