@@ -1,0 +1,11 @@
+JJ,1,Ruban,13
+OBC,1,PBJ,12
+AM,1,Chicken,34
+GK,1,Chicken,23
+PL,0,Ruban,16
+DW,0,PBJ,20
+MC,1,Ruban,23
+RO,0,PBJ,30
+SR,1,Ruban,31
+SS,1,Ruban,23
+KT,1,Ruban,10
