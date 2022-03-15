@@ -1,0 +1,31 @@
+/* Date: 15 March 2022 */
+/* Database builder file to allow you to play with constraints*/
+/* This build file builds an empty database so that you can manually populate the agents data.*/
+
+
+/* Accepts no redundancy */
+DROP TABLE Agents1;
+CREATE TABLE Agents1
+( last_name VARCHAR NOT NULL,
+  first_name VARCHAR NOT NULL,
+  address VARCHAR,
+  CONSTRAINT agents_pk PRIMARY KEY (last_name,
+first_name)
+);
+
+
+/* Accepts redundancy */
+DROP TABLE Agents2;
+CREATE TABLE Agents2
+( last_name VARCHAR NOT NULL,
+  first_name VARCHAR NOT NULL,
+  address VARCHAR
+);
+
+
+
+
+
+/* Run the builder: */
+/* Do not forget to make your database outside of your classDocs repository!*/
+/* cat builder_agentsDB_notPopulating.txt | sqlite3 agentsDB_nonPopulating.sqlite3 */

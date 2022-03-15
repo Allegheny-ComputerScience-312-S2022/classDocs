@@ -1,0 +1,48 @@
+/* Date: 15 March 2022 */
+/* Database builder file to allow you to play with constraints*/
+
+/* Accepts no redundancy */
+DROP TABLE Agents1;
+CREATE TABLE Agents1
+( last_name VARCHAR NOT NULL,
+  first_name VARCHAR NOT NULL,
+  address VARCHAR,
+  CONSTRAINT agents_pk PRIMARY KEY (last_name,
+first_name)
+);
+
+
+/* Accepts redundancy */
+DROP TABLE Agents2;
+CREATE TABLE Agents2
+( last_name VARCHAR NOT NULL,
+  first_name VARCHAR NOT NULL,
+  address VARCHAR
+);
+
+
+INSERT INTO Agents1 VALUES ("Bond","James","123 abc street");
+INSERT INTO Agents2 VALUES ("Bond","James","123 abc street");
+INSERT INTO Agents1 VALUES ("Buffalo","Bill","Nebraska street, NY");
+INSERT INTO Agents2 VALUES ("Buffalo","Bill","Nebraska street, NY");
+INSERT INTO Agents1 VALUES ("Indiana","Jones","Chicago, IL");
+INSERT INTO Agents2 VALUES ("Indiana","Jones","Chicago, IL");
+INSERT INTO Agents1 VALUES ("Wayne","Bruce","Gotham, MA");
+INSERT INTO Agents2 VALUES ("Wayne","Bruce","Gotham, MA");
+
+/* Insert same data again!*/
+
+INSERT INTO Agents1 VALUES ("Bond","James","123 abc street");
+INSERT INTO Agents2 VALUES ("Bond","James","123 abc street");
+INSERT INTO Agents1 VALUES ("Buffalo","Bill","Nebraska street, NY");
+INSERT INTO Agents2 VALUES ("Buffalo","Bill","Nebraska street, NY");
+INSERT INTO Agents1 VALUES ("Indiana","Jones","Chicago, IL");
+INSERT INTO Agents2 VALUES ("Indiana","Jones","Chicago, IL");
+INSERT INTO Agents1 VALUES ("Wayne","Bruce","Gotham, MA");
+INSERT INTO Agents2 VALUES ("Wayne","Bruce","Gotham, MA");
+
+
+
+/* Run the builder: */
+/* Do not forget to make your database outside of your classDocs repository!*/
+/* cat builder_agentsDB.txt | sqlite3 agentsDB.sqlite3 */
