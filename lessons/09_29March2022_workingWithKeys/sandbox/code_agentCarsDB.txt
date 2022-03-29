@@ -1,0 +1,45 @@
+/* Enable foreign keys: automatically check any foreign key constraints */
+PRAGMA foreign_keys = ON;
+
+DROP TABLE Car;
+CREATE TABLE Car (
+name VARCHAR PRIMARY KEY,
+registration VARCHAR,
+capacity INT,
+topSpeed INT
+);
+
+DROP TABLE Agent;
+CREATE TABLE Agent (
+id INT PRIMARY KEY,
+lastName VARCHAR,
+registration VARCHAR,
+worksFor VARCHAR,
+FOREIGN KEY(registration) REFERENCES car(name));
+
+
+
+
+
+/*The insertion code using foreign keys*/
+INSERT INTO Car values ('AstonMartin', 'MI6', 2, 130);
+INSERT INTO Agent values (1007, 'Bond', 'AstonMartin', 'MI6');
+
+/*There is no fixed relationship for this insertion. :-( */
+INSERT INTO Agent values (1008, 'Williams', 'Buick', 'MI6');
+
+/*Add the foreign key code to include Buick relationship*/
+INSERT INTO Car values ('Buick', 'MI6', 5, 60);
+
+
+/*Relationship established and Insert now works. :-)*/
+INSERT INTO Agent values (1008, 'Williams', 'Buick', 'MI6');
+
+/* More data to add...*/
+INSERT INTO Agent values (1010, 'Bennet', 'AstonMartin', 'MI6');
+INSERT INTO Agent values (1010, 'McBain', 'AstonMartin', 'MI6');
+
+
+/*Add new foreign key relationship*/
+INSERT INTO Car values ('RustyTruck', 'MI7', 10, 30);
+INSERT INTO Agent values (10, 'Rufus', 'RustyTruck', 'MI7');

@@ -1,0 +1,96 @@
+
+
+/* Foreign keys */
+pragma foreign_keys = on; /* must be turn on for FK to work*/
+
+
+/* Let's use Foreign Keys to establish a relationship between a car and the colour type! */
+
+
+DROP TABLE Colours;
+CREATE TABLE Colours (name string unique);
+
+INSERT INTO Colours VALUES("red");
+INSERT INTO Colours VALUES("green");
+INSERT INTO Colours VALUES("blue");
+INSERT INTO Colours VALUES("cyan");
+
+
+/* We establish relationship between Colours and (new table) CarsFK using a Foreign Key.*/
+DROP TABLE CarsFK;
+CREATE TABLE CarsFK (model string, year integer, colour string references Colours(name));
+
+
+INSERT INTO CarsFK VALUES("Subaru", "2018", "blue");
+INSERT INTO CarsFK VALUES("Ford", "2017", "red");
+INSERT INTO CarsFK VALUES("Chevy", "2019", "blue");
+INSERT INTO CarsFK VALUES("Toyota", "2016", "green");
+INSERT INTO CarsFK VALUES("Toyota", "2019", "Red");
+/* Error: FOREIGN KEY constraint failed.*/
+/* Why did this Error happen? */
+
+
+
+/* Note there is nothing in the code above about preventing repetition in the CarsFK table. */
+INSERT INTO CarsFK VALUES("Toyota", "2016", "green");
+INSERT INTO CarsFK VALUES("Toyota", "2016", "green");
+INSERT INTO CarsFK VALUES("Toyota", "2016", "green");
+INSERT INTO CarsFK VALUES("Toyota", "2016", "green");
+INSERT INTO CarsFK VALUES("Toyota", "2016", "green");
+
+
+
+INSERT INTO CarsFK VALUES("Toyota Sienna", "2001", "Chartreuse");
+/*  Error: FOREIGN KEY constraint failed */
+/* Why this error? */
+
+
+/* There is no relationship between the data of CarsFK and the colour, "Chartreuse" and so we fix the error by adding the "Chartreuse" to the Colours table to permit a relationship to exist.*/
+INSERT INTO Colours VALUES ("Chartreuse");
+
+
+/* Now try adding the Chartreuse car to the CarsFK */
+INSERT INTO CarsFK VALUES("Toyota Sienna", "2001", "Chartreuse");
+
+
+
+/* Modifying this database */
+
+
+
+/* This foreign key now ensures (by constraint) that all cars that are added will have a link to the correct colour data which is stored in the Colour table.  */
+
+/* Our foreign keys also says that no information can be removed from the Colours table if it is being used to form a relationship with data of the CarFK table.*/
+
+delete from Colours where name == "Chartreuse";
+/* Error: FOREIGN KEY constraint failed. */
+/* Unable to delete this entry since the relationship is still being used? */
+
+
+DELETE FROM CarsFK WHERE model == "Ford";
+DELETE FROM Colours WHERE name == "red";
+
+/* put red back */
+INSERT INTO Colours VALUES("red");
+
+
+
+/* How can we update all rows, across all tables where Chartreuse is a linked entry? */
+/* remake and repopulate the CarsFK table */
+/* note the cascade commands */
+
+DROP TABLE CarsFK_ch;
+CREATE TABLE CarsFK_ch (model string, year integer, colour string references Colours(name) on update cascade on delete cascade);
+
+INSERT INTO CarsFK_ch VALUES("Subaru", "2018", "blue");
+INSERT INTO CarsFK_ch VALUES("Ford", "2017", "red");
+INSERT INTO CarsFK_ch VALUES("Chevy", "2019", "blue");
+INSERT INTO CarsFK_ch VALUES("Toyota", "2019", "Red");
+INSERT INTO CarsFK_ch VALUES("Toyota", "2016", "green");
+INSERT INTO CarsFK_ch VALUES("BMW", "2018", "cyan");
+INSERT INTO CarsFK_ch VALUES("Mercedes", "2018", "cyan");
+INSERT INTO CarsFK_ch VALUES("Rolls-Royce", "2018", "cyan");
+
+
+update Colours set name = "ROUGE" where name = "cyan";
+/* note the automatic update in the CarsFK-ch table. */
