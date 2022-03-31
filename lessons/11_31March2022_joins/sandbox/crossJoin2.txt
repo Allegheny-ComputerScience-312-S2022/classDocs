@@ -1,0 +1,44 @@
+/* 31 March 2022 */
+
+
+drop table tableA;
+create table tableA (
+ num VARCHAR);
+
+drop table tableB;
+create table tableB (
+ num VARCHAR);
+
+
+INSERT INTO tableA VALUES (1);
+INSERT INTO tableA VALUES (2);
+INSERT INTO tableA VALUES (3);
+INSERT INTO tableA VALUES (4);
+
+INSERT INTO tableB VALUES (1);
+INSERT INTO tableB VALUES (2);
+INSERT INTO tableB VALUES (3);
+INSERT INTO tableB VALUES (4);
+INSERT INTO tableB VALUES (5);
+INSERT INTO tableB VALUES (6);
+INSERT INTO tableB VALUES (7);
+INSERT INTO tableB VALUES (8);
+INSERT INTO tableB VALUES (9);
+
+
+SELECT * from tableA join TableB;
+SELECT * from tableB join TableA;
+
+SELECT * from TableA CROSS JOIN TableB;
+SELECT * from tableA, TableB;
+
+
+
+ /* inner (left) join */
+ SELECT TableA.num  FROM TableB  LEFT JOIN TableA  ON TableA.num == TableB.num;
+ SELECT count(TableA.num)  FROM TableB  LEFT JOIN TableA  ON TableA.num == TableB.num;
+
+
+/* inner (right) join */
+ SELECT TableB.num  FROM TableA  LEFT JOIN TableB  ON TableA.num == TableB.num;
+ SELECT count(TableB.num)  FROM TableA  LEFT JOIN TableB  ON TableA.num == TableB.num;

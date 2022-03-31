@@ -1,3 +1,5 @@
+/* 31 March 2022 */
+
 DROP TABLE TableA;
 CREATE TABLE TableA (
 fruit VARCHAR,
@@ -15,10 +17,14 @@ INSERT INTO TableA VALUES ("Grapes_A","Purple");
 INSERT INTO TableB VALUES ("Lemons_B","Yellow");
 INSERT INTO TableB VALUES ("Apples_B","Red");
 INSERT INTO TableB VALUES ("Oranges_B", "Orange");
+INSERT INTO TableB VALUES ("Grapes_B","Purple");
+
 
 .tables
 
-select * from TableA;
-select * from TableB;
+SELECT * from TableA;
+SELECT* from TableB;
+
+SELECT TableA.fruit, TableA.colour, TableB.colour FROM TableA INNER JOIN  TableB ON TableB.colour == TableA.colour;
 
 select TableA.fruit, TableA.colour, TableB.colour, TableB.fruit FROM TableA INNER JOIN TableB ON TableB.colour == TableA.colour;
