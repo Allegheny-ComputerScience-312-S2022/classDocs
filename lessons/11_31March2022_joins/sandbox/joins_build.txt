@@ -1,0 +1,46 @@
+/* joins tables */
+
+drop table tableA;
+create table tableA (
+ num VARCHAR,
+ letter VARCHAR);
+
+drop table tableB;
+create table tableB (
+ num VARCHAR,
+ letter VARCHAR);
+
+INSERT INTO tableA VALUES (1,"a");
+INSERT INTO tableA VALUES (2,"b");
+INSERT INTO tableA VALUES (4,"d");
+INSERT INTO tableA VALUES (6,"f");
+
+INSERT INTO tableB VALUES (1,"a");
+INSERT INTO tableB VALUES (2,"b");
+INSERT INTO tableB VALUES (3,"c");
+INSERT INTO tableB VALUES (5,"e");
+INSERT INTO tableB VALUES (6,"f");
+INSERT INTO tableB VALUES (7,"g");
+INSERT INTO tableB VALUES (8,"h");
+INSERT INTO tableB VALUES (9,"i");
+INSERT INTO tableB VALUES (1,"a");
+
+
+/* inner (left) join */
+SELECT tableA.num
+FROM tableB
+LEFT JOIN tableA
+ON tableA.num == tableB.num;
+
+
+/* inner (left) join */
+SELECT distinct(tableA.num)
+FROM tableB
+LEFT JOIN tableA
+ON tableA.num == tableB.num;
+
+/* inner (right) join */
+SELECT tableB.num
+FROM tableA
+LEFT JOIN tableB
+ON tableA.num == tableB.num;

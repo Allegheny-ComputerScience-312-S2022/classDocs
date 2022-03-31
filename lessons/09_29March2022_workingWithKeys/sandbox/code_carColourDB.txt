@@ -1,4 +1,6 @@
 
+/* 31 March 2022 */
+
 
 /* Foreign keys */
 pragma foreign_keys = on; /* must be turn on for FK to work*/
@@ -92,5 +94,30 @@ INSERT INTO CarsFK_ch VALUES("Mercedes", "2018", "cyan");
 INSERT INTO CarsFK_ch VALUES("Rolls-Royce", "2018", "cyan");
 
 
+
+
+
+/* Now we can update the Colours table and these changes are mirrored in the CarsFK_ch table. */
+/* Here we change the "cyan" for "ROUGE" in the Colours table and we note that "Cyan" is also changed for "ROUGE" in the CarsFK_ch table, as well. How cool is that?! */
+
+/* Check the tables */
+select * from colours;
+select * from carsFK_ch;
+
+/* Change all "cyan" to "ROUGE" in Colours table. */
 update Colours set name = "ROUGE" where name = "cyan";
+
+/* Check the tables and note at "cyan" is now "ROUGE" in both tables. */
+select * from colours;
+select * from carsFK_ch;
+
+/* Do it again! */
+
+/* Change all "cyan" to "ROUGE" in Colours table. */
+update Colours set name = "DARK-BLUE" where name = "ROUGE";
+
+/* Check the tables and note at "cyan" is now "ROUGE" in both tables. */
+select * from colours;
+select * from carsFK_ch;
+
 /* note the automatic update in the CarsFK-ch table. */
