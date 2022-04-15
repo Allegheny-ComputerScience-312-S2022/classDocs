@@ -9,3 +9,4 @@ Here are some additional commands that you may need to run when using Docker:
 * `docker container prune`: remove all stopped docker containers from your workstation
 * `docker container stop ID`: stop the running container with specified ID
 * `docker rmi $(docker images -q) --force`: remove all docker images from your workstation
+* `sudo docker image prune -a` : remove all images without at least one container associated to them.
