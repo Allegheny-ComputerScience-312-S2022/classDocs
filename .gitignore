@@ -148,3 +148,8 @@ tags
 # Sqlite3
 # #######
 .sqlite_history
+
+# System
+# ######
+.bash_history
+.viminfo
