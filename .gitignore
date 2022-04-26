@@ -144,3 +144,7 @@ tags
 
 # gradle files
  .gradle
+
+# Sqlite3
+# #######
+.sqlite_history
