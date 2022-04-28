@@ -47,6 +47,7 @@ def main():
 				# st.balloons() # show some balloons!
 				# st.snow()
 				# st.success("oh yeah")
+				# st.error("oh yeah")
 
 
 				st.write("Command to list tables.")
