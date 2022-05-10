@@ -1,0 +1,52 @@
+# Date: 10 May 2022
+# Neo4J Cypher Code
+
+# ref: https://neo4j.com/graphgist/supply-chain-management
+
+# destroy all nodes in the graph
+MATCH (n)
+DETACH DELETE n
+
+# add the nodes
+CREATE (:Teacher { name: "Teacher", Jackjet: "green", Jeans: "blue", MarkerCol: "red"})
+FOREACH (r IN range(0,5)| CREATE (:Student { name:"Student" + r, extraUtility: "backpack" + r, lastTestScore:tan(rand())*100 }))
+CREATE (:TA { name: "TA", Machine: "Laptop"})
+
+
+
+# check the schema
+CALL db.schema()
+
+
+# show basic graph
+MATCH(n) RETURN(n)
+
+# add the relationships, connect the graph:
+# teacher instructs students
+# TA helps students
+# TA listens to teachers
+MATCH (t:Teacher), (s:Student), (a:TA)
+CREATE UNIQUE (t) - [:INSTRUCTS] -> (s) <-[:HELPS] - (a)
+CREATE UNIQUE (a) - [:LISTENS_TO] -> (t)
+
+# show the schema
+call db.schema()
+
+# show the nodes
+MATCH(n) RETURN(n)
+
+
+# Who Instructs whom?
+MATCH t=()-[s:INSTRUCTS]->() RETURN t
+
+# Who Helps whom?
+MATCH t=()-[s:HELPS]->() RETURN t
+
+# Who Listens to whom?
+MATCH t=()-[s:LISTENS_TO]->() RETURN t
+
+
+
+# run a basic query
+MATCH (a)-[r]-()
+RETURN a, r
